@@ -1,4 +1,6 @@
-A basic best practice template for Sencha Cmd 6.5.2
+A basic best practice template for Sencha Cmd 7.6
+
+		"uses": "sencha app build --uses development",
 
 how to use: (assuming an install to ~/aaTemplate/basictemplate on your local machine)
 
