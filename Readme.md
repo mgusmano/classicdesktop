@@ -1,3 +1,8 @@
+
+      {"path": "$\u007bapp.webpack.bundle}", "compress": false }
+
+
+
 A basic best practice template for Sencha Cmd 7.6
 
 		"uses": "sencha app build --uses development",
