@@ -1,0 +1,28 @@
+Ext.define('MyAppName.viewport.main.MainViewModel', {
+	extend: 'Ext.app.ViewModel',
+	alias: 'viewmodel.mainview',
+	data: {
+		name: 'MyAppName',
+		firstname: '',
+		lastname: '',
+		topImgStyle: 'imgBig',
+		topHeight: '150px',
+		westCollapsed:       false,
+		westview_max_width:    300,
+		westview_min_width:     44,
+		topview_height:       75,
+		bottomview_height:     50,
+		eastCollapsed:     true,
+		eastview_width:       0,
+		eastview_max_width: 300,
+		eastview_min_width:   0,
+	},
+	formulas: {
+		westview_width: function(get) {
+			return get('westCollapsed') ? get('westview_min_width') : get('westview_max_width');
+		},
+		eastview_width: function(get) {
+			return get('eastCollapsed') ? get('eastview_min_width') : get('eastview_max_width');
+		}
+	}
+});

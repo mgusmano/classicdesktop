@@ -1,0 +1,40 @@
+Ext.define('{appName}.viewport.main.MainViewController', {
+	extend: '{appName}.BaseViewController',
+  alias: 'controller.mainview',
+
+	init: function() {
+		this.user = JSON.parse(sessionStorage.getItem("user"))
+		//console.log('init',this.user,this.user.firstname,this.user.lastname)
+		var vm = this.getViewModel(); 
+		vm.set('firstname', this.user.firstname);
+		vm.set('lastname', this.user.lastname);
+		this.callParent(arguments)
+	},
+
+	routes: { 
+		':xtype': {action: 'mainRoute'}
+	},
+
+	mainRoute: function(xtype) {
+		var menuview = Ext.refs.menuview;
+		var centerview = Ext.refs.centerview;
+		var exists = Ext.ClassManager.getByAlias('widget.' + xtype);
+		if (exists === undefined) {
+			centerview.add({ xtype: 'panel', html: '<div style="font-size:24px;margin:20px;">' + xtype + ' does not exist<div>' });
+			return;
+		}
+		var node = menuview.getStore().findNode('xtype', xtype);
+		if (node == null) {
+			console.log('unmatchedRoute: ' + xtype);
+			return;
+		}
+		if (!centerview.getComponent(xtype)) {
+			centerview.add({ xtype: xtype,  itemId: xtype, heading: node.get('text') });
+		}
+		centerview.setActiveItem(xtype);
+		menuview.setSelection(node);
+		var vm = this.getViewModel(); 
+		vm.set('heading', node.get('text'));
+	}
+
+});

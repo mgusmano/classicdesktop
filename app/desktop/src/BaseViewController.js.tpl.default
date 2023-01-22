@@ -1,0 +1,50 @@
+Ext.define('{appName}.BaseViewController', {
+  extend: 'Ext.app.ViewController',
+
+	init: function(view) {
+		this.setRefs(view);
+		this.callParent(arguments);
+	},
+
+	setRefs: function(view) {
+		var name = view.reference;
+		this.refs = []
+		if (name === null || name === undefined) {
+			console.warn('reference is not defined for xtype', view.xtype);
+			return;
+		}
+		if (view.getReferences === null || view.getReferences === undefined)
+		{ 
+			//console.warn('child references not defined for',view.xtype);
+			return;
+		}
+		if (this.getReferences() === null) {
+			//console.warn('no child references defined for,',view.xtype);
+			return;
+		}
+		if (Ext.refs === undefined) {
+			Ext.refs = {};
+		}
+		for (var key in this.getReferences()) {
+			if (Object.prototype.hasOwnProperty.call(this.getReferences(), key)){
+				var value = this.getReferences() [key];
+				if (Ext.refs[key] !== undefined) {
+					console.warn('reference defined multiple times for ',key)
+					console.warn('overridden:',Ext.refs[key].xtype, Ext.refs[key])
+					console.warn('new: ',value.xtype, value)
+				}
+				this.refs.push(key)
+				Ext.refs[key] = value;
+			}
+		}
+	},
+
+	destroy: function() {
+		var arrayLength = this.refs.length;
+		for (var i = 0; i < arrayLength; i++) {
+			delete Ext.refs[this.refs[i]];
+		}
+		this.callParent(arguments);
+	}
+
+});

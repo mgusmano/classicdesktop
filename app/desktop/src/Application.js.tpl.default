@@ -1,0 +1,38 @@
+Ext.define('{appName}.Application', {
+	extend: 'Ext.app.Application',
+	name: '{appName}',
+	requires: ['{appName}.*'],
+	defaultToken: 'homeview',
+
+	launch: function () {
+		Ext.ariaWarn = Ext.emptyFn
+		var elem = document.getElementById("splash")
+		elem.parentNode.removeChild(elem)
+		var view
+		var user = sessionStorage.getItem("user"); //in production use something more secure
+		if (user === null) {
+			view = 'loginview'
+		}
+		else {
+			view = 'mainview'
+		}
+		Ext.create('Ext.container.Viewport', {
+			itemId: 'eepoint-viewport',
+			cls: 'viewport',
+			layout: 'fit',
+			items: [
+				Ext.create({xtype: view, id: view}),
+			]
+		})
+	},
+
+	onAppUpdate: function () {
+		Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
+			function (choice) {
+				if (choice === 'yes') {
+					window.location.reload();
+				}
+			}
+		);
+	}
+});

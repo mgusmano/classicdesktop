@@ -1,0 +1,6 @@
+Ext.define('{appName}.viewport.main.east.EastView', {
+	extend: 'Ext.Container',
+	xtype: 'eastview',
+	cls: 'eastview',
+	html: 'eastview'
+});

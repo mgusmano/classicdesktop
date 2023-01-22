@@ -1,0 +1,20 @@
+Ext.define('{appName}.viewport.west.menu.MenuView', {
+	extend: 'Ext.list.Tree',
+	xtype: 'menuview',
+	controller: "menuview",
+	requires: [
+		'Ext.data.TreeStore',
+	],
+	ui: 'nav',
+	scrollable: true,
+	bind: { micro: '\u007BwestCollapsed}' },
+		store: {
+		type: "tree",
+		data: Ext.menu
+	},
+	expanderFirst: false,
+	expanderOnly: false,
+	listeners: {
+		selectionchange: 'onMenuViewSelectionChange'
+	},
+});

@@ -1,0 +1,10 @@
+Ext.define('{appName}.view.customer.CustomerView',{
+	xtype: 'customerview',
+	cls: 'customerview',
+	controller: {type: 'customerviewcontroller'},
+	viewModel: {type: 'customerviewmodel'},
+	requires: [],
+	extend: 'Ext.panel.Panel',
+
+	html: '<div style="font-size:24px;">customerview</div>'
+});

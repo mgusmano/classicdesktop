@@ -1,0 +1,60 @@
+Ext.define('{appName}.viewport.login.LoginViewController', {
+  extend: '{appName}.BaseViewController',
+	alias: 'controller.loginview',
+
+	onLogin: function() {
+		var me = this
+		var refs = this.getReferences()
+		var form = refs.form.getForm()
+		if (form.isValid()) {
+			var email = refs.email.getValue()
+			var password = refs.password.getValue()
+			this.getLoginData(email, password)
+			.then(function(response) {
+				if (response.valid == true) {
+					//Ext.Msg.alert('Login Success', 'You have been logged in!')
+					sessionStorage.setItem('user', JSON.stringify({
+						email: email,
+						firstname: response.firstname,
+						lastname: response.lastname
+					}))
+					var viewport = Ext.ComponentQuery.query('viewport')[0]
+					viewport.removeAll()
+					viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
+					me.redirectTo( Ext.util.History.getToken(), \u007Bforce:true} );
+				}
+				else {
+					Ext.Msg.alert('Server Login Failure', 'You have NOT been logged in!');
+				}
+			}, function(e) {
+				console.log(e);
+			})
+		}
+	},
+
+	getLoginData: function (email, password) {
+		return new Ext.Promise(function (resolve, reject) {
+			try {
+				const valid = ['a','Marc','Nikki','Nick','Andy'];
+				var v = 'false'
+				if (valid.includes(email)) {
+					v = email
+				}
+				Ext.Ajax.request({
+					url: 'resources/data/login' + v + '.json',
+					success: function(response, opts) {
+						var o = Ext.decode(response.responseText);
+						resolve(o);
+					},
+					failure: function(response, opts) {
+						return reject ('server-side failure with status code ' + response.status);
+					}
+				});
+			}
+			catch(err) {
+				return reject(err);
+			}
+		});
+	}
+
+});

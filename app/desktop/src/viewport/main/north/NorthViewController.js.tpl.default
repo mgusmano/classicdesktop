@@ -1,0 +1,74 @@
+Ext.define("{appName}.viewport.main.north.NorthViewController", {
+  extend: '{appName}.BaseViewController',
+  alias: "controller.northview",
+
+	onLodash: function () {
+		let x = [2, 5, 7, 10, 13, 15];
+		let result = Ext._find(x, function(n) {
+			if (n * n > 100) {
+				return true;
+			}
+		});
+		console.log(result);
+	},
+	
+	onLogout: function () {
+		sessionStorage.removeItem('user')
+		var viewport = Ext.ComponentQuery.query('viewport')[0]
+		viewport.removeAll()
+		viewport.add(Ext.create({xtype: 'loginview'}))
+  },
+
+  onNavToggle: function () {
+    var vm = this.getViewModel();
+    vm.set('westCollapsed', !vm.get('westCollapsed'));
+    if (vm.get('westCollapsed') == true) {
+			vm.set('topImgStyle', 'imgSmall');
+			vm.set('topHeight', '100px');
+    }
+    else {
+			vm.set('topImgStyle', 'imgBig');
+			vm.set('topHeight', '150px');
+    }
+  },
+
+  onDetailToggle: function () {
+    var vm = this.getViewModel();
+    vm.set('eastCollapsed', !vm.get('eastCollapsed'));
+    var detailtoggle = Ext.refs.detailtoggle;
+    if(vm.get('eastCollapsed') === true) {
+      //detailtoggle.setType('prev')
+      detailtoggle.setIconCls('x-fa fa-arrow-left')
+    }
+    else {
+      //detailtoggle.setType('next')
+      detailtoggle.setIconCls('x-fa fa-arrow-right')
+    }
+  },
+
+	onToolButtonClicked: function (button) {
+		eepoint.a.log('onToolButtonClicked')
+		var viewport = Ext.ComponentQuery.query('viewport')[0]
+		viewport.add({ xtype: 'loginview' });
+		viewport.setActiveItem(1);
+
+
+		return
+    Ext.Msg.show({
+      title:'Tool Button',
+      closable: false,
+      message: button.name + ' tool button was clicked',
+      buttons: Ext.Msg.OK,
+      icon: Ext.Msg.INFO,
+      fn: function(btn) {
+        if (btn === 'ok') {
+          console.log('ok pressed');
+        } else {
+          console.log('??? pressed');
+        }
+      }
+    })
+  }
+
+
+});

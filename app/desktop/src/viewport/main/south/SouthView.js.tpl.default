@@ -1,0 +1,6 @@
+Ext.define('{appName}.viewport.main.south.SouthView', {
+	extend: 'Ext.panel.Panel',
+	xtype: 'southview',
+	cls: 'southview',
+  title: 'Ext JS version: ' + Ext.versions.extjs.version
+});

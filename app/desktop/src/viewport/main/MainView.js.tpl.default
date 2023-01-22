@@ -1,0 +1,15 @@
+Ext.define('{appName}.viewport.main.MainView', {
+  extend: 'Ext.Container',
+  xtype: 'mainview',
+  controller: 'mainview',
+  reference: 'mainview',
+  viewModel: {type: 'mainview'},
+  layout: 'border',
+  items: [
+    { xtype: "westview",reference: "westview",region: "west",weight: -1},
+    { xtype: 'northview', reference: 'northview', region: 'north', weight: -1 },
+    { xtype: 'southview', reference: 'southview', region: 'south', weight: -2 },
+    { xtype: 'centerview', reference: 'centerview', region: 'center', weight: -1 },
+    { xtype: 'eastview', reference: 'eastview', region: 'east', bind: {width: '\u007Beastview_width}'} },
+  ]
+});

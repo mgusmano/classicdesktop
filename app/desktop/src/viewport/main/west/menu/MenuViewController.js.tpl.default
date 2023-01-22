@@ -1,0 +1,11 @@
+Ext.define("{appName}.viewport.main.west.MenuViewController", {
+	extend: '{appName}.BaseViewController',
+  alias: "controller.menuview",
+
+  onMenuViewSelectionChange: function(tree, node) {
+    if (!node) return
+		if (node.get('xtype') != undefined) {
+       this.redirectTo( node.get('xtype') );
+     }
+  }
+});

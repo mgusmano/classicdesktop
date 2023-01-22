@@ -1,0 +1,22 @@
+Ext.define("{appName}.viewport.main.west.BottomViewController", {
+	extend: '{appName}.BaseViewController',
+  alias: "controller.bottomview",
+
+	onBottomButtonClicked: function (button) {
+    Ext.Msg.show({
+      title:'Bottom Button',
+      closable: false,
+      message: button.name + ' bottom button was clicked',
+      buttons: Ext.Msg.OK,
+      icon: Ext.Msg.INFO,
+      fn: function(btn) {
+        if (btn === 'ok') {
+          console.log('ok pressed');
+        } else {
+          console.log('??? pressed');
+        }
+      }
+    })
+  }
+
+});
