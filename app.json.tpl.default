@@ -5,9 +5,13 @@
   "framework": "{frameworkKey}",
   "template": "{template}",
   "indexHtmlPath": "index.html",
-  "requires": [
-    "font-awesome"
-  ],<tpl if="universal == true">
+	"requires": [
+    "font-awesome",
+		"package-loader"
+  ],
+	"uses": [
+		"EmployeeView"
+	],<tpl if="universal == true">
   "builds": {
     "desktop": {
       "toolkit": "classic",

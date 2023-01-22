@@ -1,6 +1,9 @@
 Ext.define('{appName}.viewport.main.MainViewController', {
 	extend: '{appName}.BaseViewController',
   alias: 'controller.mainview',
+	requires: [
+		'Ext.Package'
+	],
 
 	init: function() {
 		this.user = JSON.parse(sessionStorage.getItem("user"))
@@ -12,7 +15,43 @@ Ext.define('{appName}.viewport.main.MainViewController', {
 	},
 
 	routes: { 
-		':xtype': {action: 'mainRoute'}
+		':xtype': {
+			before: 'loadPackage',
+			action: 'mainRoute'
+		}
+	},
+
+	node: null,
+
+	loadPackage: function (xtype,action) {
+		console.log('loadPackage')
+		this.node = Ext.refs.menuview.controller.getNode(xtype)
+		if (this.node == null) {
+			console.log('unmatchedRoute: ' + xtype);
+			return;
+		}
+		var pkg = this.node.get('package')
+		if (pkg === undefined || pkg === null) {
+			//console.log('no package to load')
+			action.resume();
+		}
+		else if (Ext.Package.isLoaded(pkg)) {
+			//console.log(pkg + ' is already loaded')
+			action.resume();
+		}
+		else {
+			var myMask = new Ext.LoadMask({
+					msg: 'Loading ' + xtype + '...',
+					target : Ext.viewport //Ext.refs.centerview
+			});
+			myMask.show();
+			Ext.defer(function () {  // so we can see the loading mask...
+				Ext.Package.load(pkg).then(function () {
+						myMask.hide();
+						action.resume();
+				});
+			}, 500);
+		}
 	},
 
 	mainRoute: function(xtype) {
@@ -23,18 +62,13 @@ Ext.define('{appName}.viewport.main.MainViewController', {
 			centerview.add({ xtype: 'panel', html: '<div style="font-size:24px;margin:20px;">' + xtype + ' does not exist<div>' });
 			return;
 		}
-		var node = menuview.getStore().findNode('xtype', xtype);
-		if (node == null) {
-			console.log('unmatchedRoute: ' + xtype);
-			return;
-		}
 		if (!centerview.getComponent(xtype)) {
-			centerview.add({ xtype: xtype,  itemId: xtype, heading: node.get('text') });
+			centerview.add({ xtype: xtype, itemId: xtype, heading: this.node.get('text') });
 		}
 		centerview.setActiveItem(xtype);
-		menuview.setSelection(node);
+		menuview.setSelection(this.node);
 		var vm = this.getViewModel(); 
-		vm.set('heading', node.get('text'));
+		vm.set('heading', this.node.get('text'));
 	}
 
 });

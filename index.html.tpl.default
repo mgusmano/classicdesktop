@@ -14,6 +14,7 @@
 				"children": [
 					{ "text": "Home", "iconCls": "x-fa fa-home", "xtype": "homeview", "leaf": true },
 					{ "text": "Personnel", "iconCls": "x-fa fa-table", "xtype": "personnelview", "leaf": true },
+					{ "package": "EmployeeView", "text": "Employee", "iconCls": "x-fa fa-table", "xtype": "employeeview", "leaf": true },
 					{ "text": "Children", "iconCls": "x-fa fa-table", "leaf": false,
 						"children": [
 							{ "text": "Customer", "iconCls": "x-fa fa-table", "xtype": "customerview", "leaf": true},
