@@ -16,7 +16,7 @@ Ext.define('{appName}.Application', {
 		else {
 			view = 'mainview'
 		}
-		Ext.create('Ext.container.Viewport', {
+		Ext.viewport = Ext.create('Ext.container.Viewport', {
 			itemId: 'eepoint-viewport',
 			cls: 'viewport',
 			layout: 'fit',
