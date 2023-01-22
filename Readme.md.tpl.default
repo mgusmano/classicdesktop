@@ -1,1 +1,8 @@
 # {appName} application
+
+A basic best practice template for Sencha Cmd 7.6
+
+to enable the dynamic loading feature, add this line to the scripts object of package.json
+		"uses": "sencha app build --uses development",
+
+once added run this command: 'npm run uses'
