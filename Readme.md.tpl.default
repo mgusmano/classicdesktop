@@ -1,17 +1,20 @@
 # {appName} application
 
-A basic best practice template for Sencha Cmd 7.6
+A best practices template for Sencha Cmd 7.6 classic toolkit
 
 ##development
 
-to enable the  dynamic loading feature, add these lines to the scripts object of package.json
+to enable the  dynamic loading feature in development, add these lines to the scripts object of package.json
 
 "uses": "sencha app build --uses development",
-"buildprod": "sencha app build --uses desktop production",
 
 once added, run this command once in development: 
 
 npm run uses
+
+after that, development is this command:
+
+npm start
 
 ##production
 
@@ -26,3 +29,6 @@ to test production, open the build folder:
 and run:
 
 sencha web -port 2023 start
+
+
+"buildprod": "sencha app build --uses desktop production",

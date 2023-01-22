@@ -1,7 +1,7 @@
 {
 	"name": "EmployeeView",
 	"sencha": {
-			"namespace": "Demo.settings",
+			"namespace": "{appName}.employee",
 			"type": "code",
 			"version": "1.0.0",
 			"compatVersion": "1.0.0",

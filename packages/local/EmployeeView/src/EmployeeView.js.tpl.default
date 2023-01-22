@@ -1,6 +1,6 @@
-console.log('Demo.settings.EmployeeView')
-Ext.define('Demo.settings.EmployeeView', {
+console.log('{appName}.employee.EmployeeView')
+Ext.define('{appName}.employee.EmployeeView', {
 	extend: 'Ext.panel.Panel',
 	xtype: 'employeeview',
-	html: '<div style="font-size:24px;">employeeview from package2</div>'
+	html: '<div style="margin:10px 10px 10px 10px;font-size:24px;">employeeview from package</div>'
 });
