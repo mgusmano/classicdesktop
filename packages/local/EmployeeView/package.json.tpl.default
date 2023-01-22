@@ -8,12 +8,12 @@
 			"format": "1",
 			"local": true,
 			"slicer": null,
-			"output": "${package.dir}/build",
+			"output": "$\u007Bpackage.dir}/build",
 			"classpath": [
-					"${package.dir}/src"
+					"$\u007Bpackage.dir}/src"
 			],
 			"overrides": [
-					"${package.dir}/overrides"
+					"$\u007Bpackage.dir}/overrides"
 			]
 	}
 }
