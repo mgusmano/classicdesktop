@@ -3,7 +3,7 @@ Ext.define('{appName}.viewport.login.LoginView',{
 	xtype: 'loginview',
 	cls: 'loginview',
 	reference: 'loginview',
-	controller: 'loginview',
+	controller: {type: 'loginview'},
 	requires: [
 		'Ext.Img',
 		'Ext.form.Panel',

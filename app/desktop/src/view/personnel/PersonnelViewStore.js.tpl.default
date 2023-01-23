@@ -1,6 +1,6 @@
 Ext.define('{appName}.view.personnel.PersonnelViewStore', {
 	extend: 'Ext.data.Store',
-	alias: 'store.personnelviewstore',
+	alias: 'store.personnelview',
 	fields: [
 		'name', 'email', 'phone'
 	],

@@ -3,9 +3,9 @@ Ext.define('{appName}.view.personnel.PersonnelView',{
 	xtype: 'personnelview',
 	cls: 'personnelview',
 	requires: [],
-	controller: 'personnelviewcontroller',
-	viewModel: {type: 'personnelviewmodel'},
-	store: {type: 'personnelviewstore'},
+	controller: {type: 'personnelview'},
+	viewModel: {type: 'personnelview'},
+	store: {type: 'personnelview'},
 	columns: [
 		{ 
 			text: 'Name',

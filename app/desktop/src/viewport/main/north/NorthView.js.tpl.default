@@ -1,9 +1,10 @@
 Ext.define('{appName}.viewport.main.north.NorthView', {
   extend: 'Ext.toolbar.Toolbar',
-  height: 50,
   xtype: 'northview',
-	controller: 'northview',
+	controller: {type: 'northview'},
   cls: 'northview',
+	height: 50,
+
   defaults: {
     ui:'toolbutton-toolbar', 
     handler:'onToolButtonClicked'

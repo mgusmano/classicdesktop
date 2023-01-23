@@ -12,19 +12,14 @@ Ext.define('{appName}.view.customer.CustomerView',{
 	items: [
 		{
 			xtype: 'addressview',
+			reference: 'addressview',
 			tabConfig: {
 				title: 'Address',
 				tooltip: 'Display Address'
 			}
 		},
 		{
-			xtype: 'personnelview',
-			tabConfig: {
-				title: 'Personnel',
-				tooltip: 'Display Personnel'
-			}
-		},
-		{
+			reference: 'orderview',
 			tabConfig: {
 				title: 'Orders',
 				tooltip: 'Display Orders'

@@ -9,10 +9,6 @@ Ext.define('{appName}.BaseViewController', {
 	setRefs: function(view) {
 		var name = view.reference;
 		this.refs = []
-		if (name === null || name === undefined) {
-			console.warn('reference is not defined for xtype', view.xtype);
-			return;
-		}
 		if (view.getReferences === null || view.getReferences === undefined)
 		{ 
 			//console.warn('child references not defined for',view.xtype);

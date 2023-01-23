@@ -1,6 +1,7 @@
 Ext.define('{appName}.view.customer.address.AddressView',{
 	extend: 'Ext.panel.Panel',
 	xtype: 'addressview',
+	controller: {type: 'addressview'},
 	bodyPadding: 10,
 	html: 'address'
 });

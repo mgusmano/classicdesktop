@@ -63,7 +63,8 @@ Ext.define('{appName}.viewport.main.MainViewController', {
 			return;
 		}
 		if (!centerview.getComponent(xtype)) {
-			centerview.add({ xtype: xtype, itemId: xtype, heading: this.node.get('text') });
+			var i = centerview.add({ xtype: xtype, reference: xtype, itemId: xtype, heading: this.node.get('text') });
+			Ext.refs[xtype] = i
 		}
 		centerview.setActiveItem(xtype);
 		menuview.setSelection(this.node);

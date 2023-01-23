@@ -1,9 +1,10 @@
 Ext.define('{appName}.viewport.main.MainView', {
   extend: 'Ext.Container',
   xtype: 'mainview',
-  controller: 'mainview',
-  reference: 'mainview',
+	reference: 'mainview',
+  controller: {type: 'mainview'},
   viewModel: {type: 'mainview'},
+	
   layout: 'border',
   items: [
     { xtype: "westview",reference: "westview",region: "west",weight: -1},
