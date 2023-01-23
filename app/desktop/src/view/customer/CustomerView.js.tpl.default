@@ -1,10 +1,35 @@
 Ext.define('{appName}.view.customer.CustomerView',{
+	extend: 'Ext.tab.Panel',
 	xtype: 'customerview',
 	cls: 'customerview',
-	controller: {type: 'customerviewcontroller'},
-	viewModel: {type: 'customerviewmodel'},
+	controller: {type: 'customerview'},
 	requires: [],
-	extend: 'Ext.panel.Panel',
 
-	html: '<div style="font-size:24px;">customerview</div>'
+	border: true,
+	activeTab: 0,
+	plain: true,
+	tabPosition: 'top',
+	items: [
+		{
+			xtype: 'addressview',
+			tabConfig: {
+				title: 'Address',
+				tooltip: 'Display Address'
+			}
+		},
+		{
+			xtype: 'personnelview',
+			tabConfig: {
+				title: 'Personnel',
+				tooltip: 'Display Personnel'
+			}
+		},
+		{
+			tabConfig: {
+				title: 'Orders',
+				tooltip: 'Display Orders'
+			},
+			html: 'orders'
+		}
+	]
 });

@@ -1,7 +1,0 @@
-Ext.define('{appName}.view.customer.CustomerViewModel', {
-	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.customerviewmodel',
-	data: {
-		name: 'customerview'
-	}
-});
