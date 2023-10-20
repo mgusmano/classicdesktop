@@ -14,6 +14,19 @@
     "url": "{bugsURL}"
   },
   "homepage": "{homepageURL}",
+<tpl if="universal == true">
+  "scripts": {
+    "start": "npm run dev:desktop",
+    "clean": "rimraf build",
+    "dev:desktop": "webpack-dev-server --env profile=desktop --env browser=yes --env verbose=no",
+    "dev:phone": "webpack-dev-server --env profile=phone --env browser=yes --env verbose=no",
+    "build:desktop": "npm run clean && cross-env webpack --env profile=desktop --env environment=production --env treeshake=yes",
+    "build:phone": "npm run clean && cross-env webpack --env profile=phone --env environment=production --env treeshake=yes",
+    "testing:desktop": "npm run clean && cross-env webpack --env treeshake=yes --env cmdopts=--testing --env cmdopts=--build=desktop",
+    "testing:phone": "npm run clean && cross-env webpack --env treeshake=yes --env cmdopts=--testing --env cmdopts=--build=phone"
+  },
+</tpl>
+<tpl if="universal == false">
   "scripts": {
     "start": "npm run dev",
     "clean": "rimraf build",
@@ -22,9 +35,13 @@
     "build:testing": "npm run clean && cross-env webpack --env profile=desktop --env treeshake=yes --env cmdopts=--testing",
     "createview": "cross-env-shell npx sencha generate viewpackage $npm_package_extbuild_defaultprofile $VIEW"
   },
+</tpl>
   "dependencies": {
+    <tpl if="modern == true">
+    "@sencha/ext-modern": "~7.7.0",
+    "@sencha/ext-modern-{modernTheme}": "~7.7.0",</tpl><tpl if="classic == true">
     "@sencha/ext-classic": "~7.7.0",
-    "@sencha/ext-classic-{classicTheme}": "~7.7.0",
+    "@sencha/ext-classic-{classicTheme}": "~7.7.0",</tpl>
     "@sencha/ext": "~7.7.0"
   },
   "devDependencies": {

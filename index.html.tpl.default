@@ -9,6 +9,7 @@
 </tpl>	<title>{name}</title>
 <tpl if="universal == true">
 	<script type="text/javascript">
+		window.global = window
 		var Ext = Ext || {};
 		Ext.beforeLoad = function (tags) {
 			Ext.appmenu = {"expanded": true,"leaf": false,
