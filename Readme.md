@@ -3,7 +3,9 @@
 
 
 
-A basic best practice template for Sencha Cmd 7.6
+A basic best practice template for Sencha Cmd 7.7
+
+ext-gen app -a -r https://github.com/mgusmano/classicdesktop -b main -t classicdesktop -n myapp
 
 		"uses": "sencha app build --uses development",
 
