@@ -15,6 +15,11 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 				let user = Ext._userpool.getCurrentUser(error);
 				console.log(user)
 				error.setHtml( `<div style="color:blue;">$\u007Buser.username}</div>`)
+
+				// var viewport = Ext.ComponentQuery.query('viewport')[0]
+				// viewport.removeAll()
+				// viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
+				// this.redirectTo( Ext.util.History.getToken(), \u007Be force:true} );
 			}
 			catch(e) {
 				console.dir(e)
@@ -94,7 +99,7 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 					var viewport = Ext.ComponentQuery.query('viewport')[0]
 					viewport.removeAll()
 					viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
-					me.redirectTo( Ext.util.History.getToken(), {force:true} );
+					me.redirectTo( Ext.util.History.getToken(), \u007Be force:true} );
 				}
 				else {
 					Ext.Msg.alert('Server Login Failure', 'You have NOT been logged in!');
