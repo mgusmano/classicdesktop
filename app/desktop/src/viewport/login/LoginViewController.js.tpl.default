@@ -99,7 +99,7 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 					var viewport = Ext.ComponentQuery.query('viewport')[0]
 					viewport.removeAll()
 					viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
-					me.redirectTo( Ext.util.History.getToken(), \u007Be force:true} );
+					me.redirectTo( Ext.util.History.getToken(), \u007B force:true} );
 				}
 				else {
 					Ext.Msg.alert('Server Login Failure', 'You have NOT been logged in!');
