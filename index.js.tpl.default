@@ -1,2 +1,13 @@
 //this file exists so the webpack build process will succeed
 Ext._find = require('lodash.find');
+window.global = window
+import { AuthenticationDetails, CognitoUser, CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import { authenticate } from './cognito/authenticate';
+import userpool from './cognito/userpool';
+
+Ext._authenticate = authenticate;
+// Ext._logout = logout;
+Ext._userpool = userpool;
+Ext._AuthenticationDetails = AuthenticationDetails;
+Ext._CognitoUser = CognitoUser;
+Ext._CognitoUserAttribute = CognitoUserAttribute;

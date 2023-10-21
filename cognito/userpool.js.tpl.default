@@ -1,0 +1,6 @@
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
+const poolData = {
+  UserPoolId: 'us-east-1_fAZYnaQ2T', //process.env.REACT_APP_USER_POOL_ID,
+  ClientId: '3fh8cklf5h65h0h7fai9jsv58b' //process.env.REACT_APP_CLIENT_ID,
+};
+export default new CognitoUserPool(poolData);
