@@ -2,7 +2,80 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
   extend: '{appName}.BaseViewController',
 	alias: 'controller.loginview',
 
-	onLogin: function() {
+	onLogin: async function() {
+		var refs = this.getReferences();
+		var form = refs.form.getForm();
+		var error = refs.error;
+
+		if (form.isValid()) {
+			var email = refs.email.getValue();
+			var password = refs.password.getValue();
+			try {
+				await Ext._authenticate(email, password);
+				let user = Ext._userpool.getCurrentUser(error);
+				console.log(user)
+				error.setHtml( `<div style="color:blue;">${user.username}</div>`)
+			}
+			catch(e) {
+				console.dir(e)
+				error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+			}
+
+		}
+	},
+
+	onSignUp: function() {
+		var refs = this.getReferences()
+		var form = refs.form.getForm()
+
+		if (form.isValid()) {
+			var email = refs.email.getValue();
+			var password = refs.password.getValue();
+			const attributeList = [];
+			attributeList.push(
+				new Ext._CognitoUserAttribute({
+					Name: 'email',
+					Value: email,
+				})
+			);
+			Ext._userpool.signUp(email, password, attributeList, null, (e, data) => {
+				if (e) {
+					refs.error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+				} else {
+					var message = 'user added successfully'
+					refs.error.setHtml(`<div style="color:blue;">${message.toString()}</div>`)
+				}
+			});
+		}
+	},
+
+	onConfirm: function() {
+		var refs = this.getReferences()
+		var email = refs.email.getValue();
+		var confirmation = refs.confirmation.getValue()
+
+		if (confirmation.trim() === '') {
+		var message = 'enter confirmation code'
+		refs.error.setHtml(`<div style="color:red;">${message.toString()}</div>`)
+		}
+		else {
+			const user = new Ext._CognitoUser({
+				Username: email,
+				Pool: Ext._userpool
+			});
+			user.confirmRegistration(confirmation, true, (e, data) => {
+			if (e) {
+				refs.error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+			}
+			else {
+				var message = 'user is confirmed'
+				refs.error.setHtml(`<div style="color:blue;">${message.toString()}</div>`)
+			}
+			});
+		}
+	},
+
+	onLoginExample: function() {
 		var me = this
 		var refs = this.getReferences()
 		var form = refs.form.getForm()
@@ -21,7 +94,7 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 					var viewport = Ext.ComponentQuery.query('viewport')[0]
 					viewport.removeAll()
 					viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
-					me.redirectTo( Ext.util.History.getToken(), \u007Bforce:true} );
+					me.redirectTo( Ext.util.History.getToken(), {force:true} );
 				}
 				else {
 					Ext.Msg.alert('Server Login Failure', 'You have NOT been logged in!');

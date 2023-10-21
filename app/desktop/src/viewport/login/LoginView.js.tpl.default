@@ -1,103 +1,62 @@
 Ext.define('{appName}.viewport.login.LoginView',{
 	extend: 'Ext.Panel',
 	xtype: 'loginview',
-	cls: 'loginview',
 	reference: 'loginview',
 	controller: {type: 'loginview'},
-	requires: [
-		'Ext.Img',
-		'Ext.form.Panel',
-		'Ext.form.field.Checkbox'
-	],
-	layout: {
-		type: 'vbox',
-		align: 'center',
-		pack: 'center'
-	},
+	layout: {type: 'vbox',align: 'center',pack: 'center'},
 	border: 20,
-
 	items: [
 		{
 			xtype: 'form',
 			reference: 'form',
-			layout: 'vbox',
+			cls: 'loginview',
+			layout: {type: 'vbox',align: 'center',pack: 'center'},
 			defaults: {width: 280},
 			items: [
 				{
 					xtype: 'image',
-					height: 100,
-					alt: 'acme-logo-image',
-					src: 'resources/desktop/acme.png'
+					height: 230,
+					margin:'0 0 50px 0',
+					alt: 'logo-image',
+					src: 'resources/desktop/cognito.png'
 				},
 				{
 					xtype: 'component',
 					html: 'Login Into Your Account',
-					style: {
-						'height': '25px',
-						'font-size': '24px',
-						'text-align': 'center'
-					}
+					style: {'height': '25px','font-size': '24px','text-align': 'center'}
 				},
 				{
-					xtype: 'textfield',
-					inputType: 'email',
-					allowBlank: false,
-					required: true,
-					margin: "25 0 0 0",
+					xtype: 'textfield', inputType: 'email',
+					value: 'marcgusmano@gmail.com',
+					allowBlank: false, required: true,
 					fieldLabel: 'Email Address',
-					name: 'email',
-					reference: 'email',
-					placeholder: 'Email Address',
-					msgTarget: 'qtip'
+					name: 'email', reference: 'email',
+					margin: '25 0 0 0'
 				},
 				{
-					xtype: 'textfield',
-					inputType: 'password',
-					allowBlank: false,
-					required: true,
+					xtype: 'textfield', inputType: 'password',
+					value: 'Password1!',
+					allowBlank: false, required: true,
 					fieldLabel: 'Password',
-					name: 'password',
-					reference: 'password',
-					placeholder: 'password',
-					msgTarget: 'qtip',
-					margin: "25 0 0 0"
+					name: 'password', reference: 'password',
+					margin: '25 0 0 0'
 				},
 				{
-					xtype: 'checkbox',
-					width: 280,
-					height: 30,
-					boxLabel: 'Keep me logged in',
-					name: 'remember',
-					margin: "25 0 0 0",
-					style: {
-						'font-size': '16px',
-						'letter-spacing': '1.25px',
-						'color': 'rgba(17, 17, 17, 0.54)'
-					}
+					xtype: 'textfield', inputType: 'text',
+					allowBlank: true, required: false,
+					fieldLabel: 'Confirmation Code',
+					name: 'confirmation', reference: 'confirmation',
+					margin: '25 0 0 0'
 				},
-				{
-					xtype: 'button',
-					text: 'LOG IN',
-					autoSize: true,
-					handler: 'onLogin',
-					height: 30,
-					width: 280,
-					margin: '30 0 0 0',
-					style: {
-							'text-align': 'center',
-							'letter-spacing': '1.25px',
-							'font-size': '14px'
-					}
-				},
+				{ xtype: 'button', text: 'LOG IN',  handler: 'onLogin',   margin: '25 0 0 0'},
+				{ xtype: 'button', text: 'SIGN UP', handler: 'onSignUp',  margin: '0 0 0 0'},
+				{ xtype: 'button', text: 'CONFIRM', handler: 'onConfirm', margin: '0 0 0 0'},
 				{
 					xtype: 'component',
-					html: "<a style='color: var(--base-color);text-decoration: none;' href='#template-reset-password'>Forgot your Password?</a>",
-					style: {
-							'font-size': '16px',
-							'text-align': 'center'
-					},
-					width: 280,
-					margin: "20 0 0 0"
+					reference: 'error',
+					style: {'font-size': '16px','text-align': 'center'},
+					width: 400, height: 30,
+					margin: '25 0 0 0'
 				}
 			]
 		}
