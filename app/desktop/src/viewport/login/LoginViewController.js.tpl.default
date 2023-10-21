@@ -14,11 +14,11 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 				await Ext._authenticate(email, password);
 				let user = Ext._userpool.getCurrentUser(error);
 				console.log(user)
-				error.setHtml( `<div style="color:blue;">${user.username}</div>`)
+				error.setHtml( `<div style="color:blue;">$\u007Buser.username}</div>`)
 			}
 			catch(e) {
 				console.dir(e)
-				error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+				error.setHtml(`<div style="color:red;">$\u007Be.message.toString()}</div>`)
 			}
 
 		}
@@ -40,10 +40,10 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 			);
 			Ext._userpool.signUp(email, password, attributeList, null, (e, data) => {
 				if (e) {
-					refs.error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+					refs.error.setHtml(`<div style="color:red;">$\u007Be.message.toString()}</div>`)
 				} else {
 					var message = 'user added successfully'
-					refs.error.setHtml(`<div style="color:blue;">${message.toString()}</div>`)
+					refs.error.setHtml(`<div style="color:blue;">$\u007Bmessage.toString()}</div>`)
 				}
 			});
 		}
@@ -56,7 +56,7 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 
 		if (confirmation.trim() === '') {
 		var message = 'enter confirmation code'
-		refs.error.setHtml(`<div style="color:red;">${message.toString()}</div>`)
+		refs.error.setHtml(`<div style="color:red;">$\u007Bmessage.toString()}</div>`)
 		}
 		else {
 			const user = new Ext._CognitoUser({
@@ -65,11 +65,11 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 			});
 			user.confirmRegistration(confirmation, true, (e, data) => {
 			if (e) {
-				refs.error.setHtml(`<div style="color:red;">${e.message.toString()}</div>`)
+				refs.error.setHtml(`<div style="color:red;">$\u007Be.message.toString()}</div>`)
 			}
 			else {
 				var message = 'user is confirmed'
-				refs.error.setHtml(`<div style="color:blue;">${message.toString()}</div>`)
+				refs.error.setHtml(`<div style="color:blue;">$\u007Bmessage.toString()}</div>`)
 			}
 			});
 		}
