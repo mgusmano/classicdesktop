@@ -16,6 +16,11 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 				console.log(user)
 				error.setHtml( `<div style="color:blue;">$\u007Buser.username}</div>`)
 
+				// sessionStorage.setItem('user', JSON.stringify({
+				// 	email: email,
+				// 	firstname: 'first',
+				// 	lastname: 'last'
+				// }))
 				// var viewport = Ext.ComponentQuery.query('viewport')[0]
 				// viewport.removeAll()
 				// viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
