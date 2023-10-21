@@ -19,7 +19,7 @@ Ext.define('{appName}.viewport.login.LoginViewController', {
 				// var viewport = Ext.ComponentQuery.query('viewport')[0]
 				// viewport.removeAll()
 				// viewport.add(Ext.create({xtype: 'mainview', id: 'mainview'}))
-				// this.redirectTo( Ext.util.History.getToken(), \u007Be force:true} );
+				// this.redirectTo( Ext.util.History.getToken(), \u007B force:true} );
 			}
 			catch(e) {
 				console.dir(e)
