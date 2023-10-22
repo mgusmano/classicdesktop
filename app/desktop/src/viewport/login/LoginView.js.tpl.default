@@ -1,3 +1,4 @@
+// npm i amazon-cognito-identity-js
 Ext.define('{appName}.viewport.login.LoginView',{
 	extend: 'Ext.Panel',
 	xtype: 'loginview',
