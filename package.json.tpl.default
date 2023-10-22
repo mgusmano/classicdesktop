@@ -1,4 +1,5 @@
 {
+  "bypass_lp": true,
   "name": "{packageName}",
   "product": "ext",
   "version": "{version}",
@@ -26,7 +27,7 @@
     "@sencha/ext-classic": "~7.7.0",
     "@sencha/ext-classic-{classicTheme}": "~7.7.0",
     "@sencha/ext": "~7.7.0",
-		"amazon-cognito-identity-js": "^6.3.6"
+    "amazon-cognito-identity-js": "^6.3.6"
   },
   "devDependencies": {
     "@sencha/ext-webpack-plugin": "~7.7.0",
